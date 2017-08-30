@@ -1,0 +1,22 @@
+{
+  "name": "28-redux-middleware",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) 28: Redux Middleware ======",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack-dev-server --inline --hot",
+    "test": "jest --coverage",
+    "test-watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnScarrow/28-redux-middleware.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JohnScarrow/28-redux-middleware/issues"
+  },
+  "homepage": "https://github.com/JohnScarrow/28-redux-middleware#readme"
+}
