@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import expenseForm from '../expense-form';
-import expenseItem from '../expense-item';
+import ExpenseForm from '../expense-form';
+import ExpenseItem from '../expense-item';
 import CategoryForm from '../category-form';
 
 import {categoryUpdate, categoryDelete} from '../../action/category-actions.js';
@@ -11,7 +11,7 @@ import {expenseCreate} from '../../action/expense-actions.js';
 class CategoryItem extends React.Component {
   render() {
     let {category, categoryUpdate, categoryDelete, expenses} = this.props;
-    console.log('__expenseS__', expenses);
+    console.log('__EXPENSES__', expenses);
 
     return (
       <section className='category-item'>
@@ -29,14 +29,14 @@ class CategoryItem extends React.Component {
         </div>
 
         <div className='expense-container'>
-          <expenseForm
+          <ExpenseForm
             categoryID={category.id}
             buttonText='create expense'
             onComplete={this.props.expenseCreate} />
 
           <ul className='expense-items'>
             {expenses.map(expense =>
-              <expenseItem key={expense.id} expense={expense} />
+              <ExpenseItem key={expense.id} expense={expense} />
             )}
           </ul>
         </div>

@@ -1,8 +1,8 @@
 import React from 'react';
-import {provider} from 'react-redux';
-import{BrouserRouter} from  'react-router-dom';
+import {Provider} from 'react-redux';
+import{BrowserRouter, Route} from  'react-router-dom';
 import createAppStore from '../../lib/store.js';
-import DashboardContainer from '../dashboard-container';
+import DashboardContainer from '../dashboard';
 
 const store = createAppStore();
 
@@ -27,3 +27,5 @@ class App extends React.Component {
     )
   }
 }
+
+export default App;

@@ -1,16 +1,14 @@
-const console.lol = console.log;
-
 let reporter = store => next => action => {
-  console.lol('__ACTION__', action);
+  console.log('__ACTION__', action);
 
   try {
     let result = next(action);
-    console.lol('__STATE__', store.getStore());
+    console.log('__STATE__', store.getState());
     return result;
   }catch(err){
     err.action = action;
-    console.err('__ERROR__', err);
-    return err:
+    console.error('__ERROR__', err);
+    return err;
   }
 }
 
