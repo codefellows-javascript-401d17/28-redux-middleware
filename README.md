@@ -9,7 +9,6 @@
 
 ## Learning Objectives
 * students will be able to create and implement custom middleware for redux
-* students will be able to add and implement third party middleware for redux
 
 ## Requirements
 #### Configuration  
@@ -31,6 +30,5 @@
 * create a series of tests that meet the test criteria below
 
 #### Tests
-* test every component (with the exception of app)
 * test all of your action creators
 * test each reducer used in your applications `combineReducers`
