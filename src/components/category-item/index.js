@@ -5,20 +5,16 @@ import {
   categoryDelete
 } from '../../action/category-actions.js';
 import { connect } from 'react-redux';
-import ExpenseForm from '../expense-form'
-
-//TODO: extend to explicit
+import ExpenseForm from '../expense-form';
+import { expenseCreate } from '../../action/expense-actions.js'
+// import ExpenseItem from '../expense-item';
 
 
 class CategoryItem extends React.Component {
-
-  constructor(props) {
-    super(props);
-    console.log('category-item props', props);
-  }
-
   render() {
-    let { category, categoryDelete, categoryUpdate } = this.props;
+    let { category, categoryDelete, categoryUpdate, expenses } = this.props;
+
+    console.log('__EXPENSES__(category-item):', expenses);
 
     return (
       <li key={this.props.category.id}>
@@ -35,8 +31,17 @@ class CategoryItem extends React.Component {
           category={this.props.category}
         />
         <ExpenseForm
+          onComplete={this.props.expenseCreate}
+          category={category}
           buttonText='Deduct'
         />
+        <ul>
+          {expenses.map((expense) => {
+            return (
+              <li>name: {expense.name} price: {expense.price}</li>
+            )
+          })}
+        </ul>
       </li>
 
 
@@ -44,8 +49,11 @@ class CategoryItem extends React.Component {
   }
 }
 
-let mapStateToProps = () => ({});
+let mapStateToProps = (state, props) => ({
+  expenses: state.expenses[props.category.id]
+});
 let mapDispatchToProps = dispatch => ({
+  expenseCreate: (expense) => { return dispatch(expenseCreate(expense)) },
   categoryUpdate: (category) => dispatch(categoryUpdate(category)),
   categoryDelete: (category) => dispatch(categoryDelete(category))
 });

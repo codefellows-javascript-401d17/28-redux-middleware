@@ -4,6 +4,6 @@ import categoryReducer from './category.js';
 
 //exports a single function that handles every type of action
 export default combineReducers({
-  expense: expenseReducer,
+  expenses: expenseReducer,
   categories: categoryReducer
 })
