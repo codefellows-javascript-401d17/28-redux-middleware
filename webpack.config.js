@@ -18,7 +18,7 @@ let plugins = [
   })
 ]
 
-if(production) {
+if (production) {
   plugins = plugins.concat([ new CleanPlugin(), new UglifyPlugin() ]);
 }
 
@@ -37,12 +37,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
-        test: /\.scss$,
+        test: /\.scss$/,
         loader: ExtractPlugin.extract(['css-loader', 'sass-loader'])
       },
       {
