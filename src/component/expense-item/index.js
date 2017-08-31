@@ -14,6 +14,7 @@ class ExpenseItem extends React.Component {
         <button className='deleteButton' onClick={()=>expenseDelete(expense)}>x</button>
         <div className='editing'>
           <ExpenseForm
+            expense={expense}
             buttonText='update expense'
             onComplete={expenseUpdate}
             />
