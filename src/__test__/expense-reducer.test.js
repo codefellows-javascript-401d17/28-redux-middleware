@@ -1,56 +1,71 @@
 import expenseReducer from '../reducer/expense.js';
 
 describe('Expense Reducer', () => {
-  let state = {
-    expenses: { 5678: [{ id: '1234', categoryID: '5678', name: 'some name', price: 10 }] }
+  let expense = {
+    id: '1234',
+    categoryID: 'category',
+    name: 'test name',
+    price: 10,
+    timestamp: new Date()
   }
 
-  test('initialState state should be an empty array', () => {
-    let result = expenseReducer(undefined, {type: null});
-    expect(result).toEqual({})
-  })
+  test('initial state should be an empty object', () => {
+    let result = expenseReducer(undefined, { type: null });
+    expect(result).toEqual({});
+  });
 
-  test('if no action type is provided the default state should be returned', () => {
-    let result = expenseReducer(state, { type: null });
+  test('if no action type is provided the state should be returned', () => {
+    let state = [
+      { id: '1234', name: 'test name', price: 12 }
+    ]
+
+    let result = expenseReducer(state, {type: null});
     expect(result).toEqual(state);
-  })
+  });
 
-  test('EXPENSE_CREATE should append an expense to the expense array', () => {
+  test('EXPENSE_CREATE should append a expense to the expenses object', () => {
     let action = {
       type: 'EXPENSE_CREATE',
-      payload: 'sample payload'
+      payload: expense
     }
+    let category = []
 
-    let result = expenseReducer([], action);
-    expect(result.length).toBe(1);
-    expect(result[0]).toBe(action.payload);
-  })
+    let result = expenseReducer({category}, action);
+    expect(result.category.length).toBe(1);
+    expect(result.category[0]).toBe(action.payload);
+  });
 
-  test('EXPENSE_UPDATE should update an expense', () => {
-    let newExpense = {
-      id: '1234',
-      timestamp: new Date(),
-      name: 'new name',
-      price: 20,
-      categoryID: 5678
-    }
+  test('EXPENSE_UPDATE should update an expense in the expenses object', () => {
+    let category = []
+
+    let state = expenseReducer({category}, {type: 'EXPENSE_CREATE', payload: expense});
 
     let action = {
       type: 'EXPENSE_UPDATE',
-      payload: newExpense
+      payload: {
+        id: '1234',
+        categoryID: 'category',
+        name: 'new name',
+        price: 20,
+        timestamp: new Date()
+      }
     }
 
     let result = expenseReducer(state, action);
-    expect(result[0]).toBe(action.payload);
+    expect(result.category[0]).toBe(action.payload)
   })
 
-  test('EXPENSE_DELETE should remove an expense', () => {
+  test('EXPENSE_DELETE should remove an expense from the expenses object', () => {
+    let category = []
+
+    let state = expenseReducer({category}, {type: 'EXPENSE_CREATE', payload: expense});
+
     let action = {
       type: 'EXPENSE_DELETE',
-      payload: {id: '1234'}
+      payload: expense
     }
 
     let result = expenseReducer(state, action);
-    expect(result.length).toBe(0);
+    expect(result.category.length).toBe(0);
   })
 });
