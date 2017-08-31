@@ -25,5 +25,8 @@ describe('Category Reducer', () => {
     let result = categoryReducer(state, action);
     expect(result[2]).toBe(action.payload);
   })
+
+  //todo: test UPDATE
+  //todo: test DELETE
 });
 

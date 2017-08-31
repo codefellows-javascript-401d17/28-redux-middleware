@@ -1,10 +1,11 @@
 import React from 'react';
 import CategoryForm from '../category-form/'
-import { 
+import {
   categoryUpdate,
   categoryDelete
 } from '../../action/category-actions.js';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import ExpenseForm from '../expense-form'
 
 //TODO: extend to explicit
 
@@ -17,7 +18,7 @@ class CategoryItem extends React.Component {
   }
 
   render() {
-    let {category, categoryDelete, categoryUpdate} = this.props;
+    let { category, categoryDelete, categoryUpdate } = this.props;
 
     return (
       <li key={this.props.category.id}>
@@ -33,22 +34,9 @@ class CategoryItem extends React.Component {
           onComplete={this.props.categoryUpdate}
           category={this.props.category}
         />
-        {/* TODO: get props onto categoryItem, then can pass: <ExpenseForm onComplete={this.props.expenseCreate}/> and call in handleSubmit */}
-        {/* TODO: modularize expense form */}
-        <h3>Add an expense</h3>
-        <input
-          type='text'
-          name='expense-name-field'
-          placeholder='enter an expense'
-          onChange={this.handleChange}
+        <ExpenseForm
+          buttonText='Deduct'
         />
-        <input
-          type='text'
-          name='expense-price-field'
-          placeholder='enter a price'
-          onChange={this.handleChange}
-        />
-        <button type='submit'>Add</button>
       </li>
 
 
