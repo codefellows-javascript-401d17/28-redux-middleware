@@ -8,8 +8,8 @@ class ExpenseForm extends React.Component {
       id: props.expense ? propse.expense.id : null,
       timestamp: props.expense ? props.expense.timestamp : new Date(),
       name: props.expense ? props.expense.name : '',
-      categoryID: props.expense ? propse.expense.categoryID : this.props.category.id,
-      price:
+      categoryID: props.expense ? props.expense.categoryID : this.props.category.id,
+      price: props.expense ? props.expense.price : null
     }
 
     this.handleChange = this.handleChange.bind(this);

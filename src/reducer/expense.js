@@ -1,3 +1,15 @@
+let validateCategory = (category) => {
+  if(!category.id || !category.title || category.timestamp) {
+    throw new Error('VALIDATION ERROR: category id, title, and timestamp required');
+  }
+}
+
+let validateExpense = (expense) => {
+  if(!expense.id || !expense.timestamp || expense.name || expense.categoryID || expense.price) {
+    throw new Error('VALIDATION ERROR: card id, timestamp, name, categoryID, and price required');
+  }
+}
+
 let initialState = [];
 
 export default (state=initialState, action) => {
@@ -5,13 +17,36 @@ export default (state=initialState, action) => {
 
   switch(type) {
     case 'CATEGORY_CREATE':
+      validateCategory(payload);
       return {...state, [payload.id] : []};
     case 'CATEGORY_DELETE':
+      validateCategory(payload);
       return {...state, [payload.id] : undefined};
     case 'EXPENSE_CREATE':
-      let {categoryID} = payload;
-      let categoryExpense = state[categoryID];
-      return {...state, [categoryID]: [...categoryExpense, payload]};
+      validateExpense(payload);
+      categoryID = payload.categoryID;
+      categoryExpenses = state[categoryID];
+      return {...state, [categoryID]: [...categoryExpenses, payload]};
+    case 'EXPENSE_UPDATE':
+      validateExpense(payload);
+      categoryID = payload.categoryID;
+      categoryExpenses = state[categoryID];
+      return {
+        ...state,
+        [categoryID]: categoryExpenses.map(expense => {
+          return expense.id === payload.id ? payload : expense;
+        })
+      }
+    case 'EXPENSE_DELETE':
+      validateExpense(payload);
+      categoryID = payload.categoryID;
+      categoryExpenses = state[categoryID];
+      return {
+        ...state,
+        [categoryID]: categoryExpenses.filter(expense => {
+          return expense.id !== payload.id
+        })
+      }
     default:
       return state
   }
