@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {connect} from 'react-redux';
 
@@ -18,7 +19,7 @@ class CategoryItem extends React.Component {
         <div className='content-container'>
           <div className='content'>
             <h2>{category.title}</h2>
-            <button onClick={() => categoryDelete(category)}>x</button>
+            <button className='remove' onClick={() => categoryDelete(category)}>x</button>
           </div>
           <div className='editing'>
             <CategoryForm

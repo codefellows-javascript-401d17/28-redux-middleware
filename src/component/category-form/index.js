@@ -35,7 +35,7 @@ class CategoryForm extends React.Component {
         <input
           name='title'
           type='text'
-          placeholder='title'
+          placeholder='Expense Type'
           value={this.state.title}
           onChange={this.handleChange}
         />

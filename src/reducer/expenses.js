@@ -23,12 +23,12 @@ export default (state=initialState, action) => {
     case 'CATEGORY_DELETE':
       validateCategory(payload);
       return {...state, [payload.id]: undefined};
-    case 'CARD_CREATE':
+    case 'EXPENSE_CREATE':
       validateExpense(payload);
       categoryID = payload.categoryID;
       categoryExpenses = state[categoryID];
       return {...state, [categoryID]: [...categoryExpenses, payload]};
-    case 'CARD_UPDATE':
+    case 'EXPENSE_UPDATE':
       validateExpense(payload);
       categoryID = payload.categoryID;
       categoryExpenses = state[categoryID];
@@ -39,7 +39,7 @@ export default (state=initialState, action) => {
           return expense.id === payload.id ? payload : expense;
         })
       }
-    case 'CARD_DELETE':
+    case 'EXPENSE_DELETE':
       validateExpense(payload);
       categoryID = payload.categoryID;
       categoryExpenses = state[categoryID];
