@@ -1,0 +1,9 @@
+@import '../../style/lib/_vars.scss';
+
+.expense-form{
+  margin: $gutter-sm;
+  border: 3px solid black;
+  border-radius: $boarder-radius;
+  padding: $gutter-sm;
+
+}
