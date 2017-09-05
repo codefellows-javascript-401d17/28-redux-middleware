@@ -1,0 +1,9 @@
+@import '../../style/lib/vars';
+
+.expense-item {
+  background: $white;
+  border: solid 3px $black;
+  border-radius: $border-radius;
+  padding: $gutter-sm;
+  margin: $gutter-sm 0; 
+}

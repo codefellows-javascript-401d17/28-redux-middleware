@@ -1,0 +1,19 @@
+@import '../../style/lib/vars';
+
+.category-item {
+  .category-container {
+    margin-top: $gutter-lg;
+    margin-bottom: $gutter-lg;
+    border-bottom: 1vw solid $black;
+  }
+
+  .expense-container {
+    h3 {
+      font-family: $font-header;
+    }
+
+    p {
+      font-size: 3vw;
+    }
+  }
+}
