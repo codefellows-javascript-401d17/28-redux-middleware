@@ -14,7 +14,7 @@ class ExpenseItem extends React.Component {
           <div className='content'>
             <h3>{expense.name}</h3>
             <p>price: {expense.price}</p>
-            <button onClick={() => expenseDelete(expense)}>x</button>
+            <button className='delete-button' onClick={() => expenseDelete(expense)}>x</button>
           </div>
           <div className='editing'>
             <ExpenseForm

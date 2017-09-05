@@ -1,3 +1,5 @@
+import './_category-item.scss';
+
 import React from 'react';
 import {connect} from 'react-redux';
 
@@ -13,7 +15,7 @@ class CategoryItem extends React.Component {
 
     return (
       <section className='category-item'>
-        <button onClick={() => this.props.categoryDelete(this.props.category)}>X</button>
+        <button className='delete-button' onClick={() => this.props.categoryDelete(this.props.category)}>X</button>
 
         <div>
           <h2>{this.props.category.name}</h2>
